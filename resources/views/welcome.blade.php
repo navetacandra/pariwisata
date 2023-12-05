@@ -43,6 +43,22 @@
                 </div>
             @endforeach
         </div>
+
+        @if(count($most_view_destinations) > 0)
+        <h2 style="text-align: center;">Most Viewed Destinations</h2>
+        @endif
+        <div class="wisata-list" style="padding-top: 1rem;">
+            @foreach ($most_view_destinations as $destination)
+                <div class="wisata-card" data-destination="{{ $destination->slug }}">
+                    <div class="wisata-image-overlay"></div>
+                    <div class="wisata-image"
+                        style="background: url({{ asset('storage/' . $destination->image) }}); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                    </div>
+                    <div class="wisata-category">Wisata {{ Str::ucfirst($destination->category) }}</div>
+                    <p class="wisata-name">{{ $destination->location_name }}</p>
+                </div>
+            @endforeach
+        </div>
     </div>
     <script>
         let showIndex = 0;

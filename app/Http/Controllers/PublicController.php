@@ -13,17 +13,19 @@ class PublicController extends Controller
     public function index()
     {
         $destinations = Destination::all();
-        $galleries = Gallery::all();
-        return view('welcome', compact('destinations', 'galleries'));
+        $most_view_destinations = Destination::orderBy('view', 'desc')->get();
+        $galleries = Gallery::whereNull('destination_id')->get();
+        return view('welcome', compact('destinations', 'most_view_destinations', 'galleries'));
     }
 
     public function category($category)
     {
         $destinations = Destination::where('category', $category)->get();
         $galleries = Gallery::all();
-        return view('welcome', compact('destinations', 'galleries'));
+        $most_view_destinations = Destination::where('category', $category)->orderBy('view', 'desc')->get();
+        return view('welcome', compact('destinations', 'most_view_destinations', 'galleries'));
     }
-
+    
     public function destination_detail($slug)
     {
         $destination = Destination::where('slug', $slug);
@@ -33,6 +35,8 @@ class PublicController extends Controller
             <script>alert("Destinasi tidak di-temukan!"); window.location.href = "' . route('home') . '";</script>
             ';
         }
+
+        $destination->first()->update(['view' => $destination->first()->view + 1]);
 
         $destination = Destination::with('comments')->where('slug', $slug)->orderBy('created_at')->get()->first();
         $q_replies = Comment::where('destination_id', $destination->id)->whereNotNull('comment_id')->orderBy('created_at')->get();

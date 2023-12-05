@@ -16,6 +16,7 @@ class Destination extends Model
         'category',
         'description',
         'image',
+        'view',
     ];
 
     public function comments() {

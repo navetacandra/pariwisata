@@ -21,6 +21,7 @@ class CreateDestinationsTable extends Migration
             $table->string('image');
             $table->string('address');
             $table->text('description');
+            $table->integer('view')->default(0);
             $table->timestamps();
         });
     }
