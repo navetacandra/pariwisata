@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+#nav-menu-show {
+    display: none;
+}
+
+nav {
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    box-shadow: none;
+}
+
+nav .menu {
+    list-style: none;
+    transition: all ease 1s;
+}
+
+nav .menu li {
+    float: left;
+}
+
+nav .menu li a {
+    display: block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    background-color: inherit;
+    color: #fff;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+    transition: all ease 0.3s;
+}
+
+nav .menu li a:hover,
+nav .menu li a:focus,
+.nav-menu-toggler:hover,
+.nav-menu-toggler:focus {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.nav-menu-toggler {
+    cursor: pointer;
+    display: none;
+    padding: 1rem 2rem;
+}
+
+.nav-menu-toggler span {
+    display: block;
+    width: 1rem;
+    height: 0.2rem;
+    background-color: #fff;
+    border-radius: 25%;
+    margin: 2.8px auto;
+    transition: all ease 0.5s;
+}
+
+.hero {
+    z-index: 1;
+    width: 100vw;
+    position: relative;
+    transform: translateY(0);
+}
+
+.hero .slider {
+    display: flex;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem;
+    transform: translateY(0);
+}
+
+.prev-btn,
+.next-btn {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 4px;
+    width: 2rem;
+    padding: 1rem .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 1rem;
+}
+
+.img-container {
+    z-index: 1;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 35rem;
+    margin: 0 auto;
+    background-color: rgba(200, 200, 200, 0.8);
+}
+
+.hero .description {
+    z-index: 0;
+    color: #fdfdfd;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero ~ * {
+    z-index: 4;
+    position: relative;
+    background-color: #fff;
+    width: 100vw;
+}
+
+.app-detail {
+    padding: 3rem 5rem;
+    margin: 3rem auto 0 auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-detail div {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 45%;
+    margin-bottom: 2rem;
+}
+
+.app-detail div:has(>.app-logo) {
+    align-items: center;
+}
+
+
+.app-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: .075rem;
+    margin-bottom: .5rem;
+}
+
+.app-logo {
+    width: 40%;
+    height: auto;
+}
+
+.wisata-list {
+    margin: 0 auto;
+    padding: 5rem 3rem 13rem 3rem;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.wisata-card {
+    position: relative;
+    overflow: hidden;
+    width: 20rem;
+    height: 13rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+    margin: 1rem auto;
+    cursor: pointer;
+}
+
+.wisata-image {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    transition: all ease 0.5s;
+}
+
+.wisata-image-overlay {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all ease 0.2s;
+}
+
+.wisata-category {
+    z-index: 3;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    color: #fff;
+    font-size: 0.9rem;
+    background-color: rgb(0, 136, 255);
+    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    transition: all ease 0.5s;
+}
+
+.wisata-name {
+    z-index: 3;
+    position: absolute;
+    bottom: 15%;
+    left: 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #f0f0f0;
+    text-shadow: 0 3px rgba(0, 0, 0, 0.15);
+}
+
+.wisata-card:hover .wisata-image {
+    transform: scale(1.15);
+}
+
+.wisata-card:hover .wisata-image-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.wisata-card:hover .wisata-category {
+    transform: scale(1.05);
+}
+
+@keyframes slide-in-right {
+    from {
+        left: -100%;
+        opacity: 0;
+    }
+
+    to {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wisata-card {
+        width: 17rem;
+        height: 12rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .app-detail {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .app-detail div {
+        width: 100%;
+        margin: 1.5rem auto;
+    }
+
+    .wisata-card {
+        width: 15rem;
+        height: 10rem;
+    }
+
+    .nav-menu-toggler {
+        display: block;
+    }
+
+    nav .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 3rem;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px rgba(0, 0, 0, 0.2);
+        animation: slide-in-right 0.5s ease;
+    }
+
+    nav .menu li a {
+        border-bottom: 1px solid #ddd;
+    }
+
+    #nav-menu-show:checked ~ .menu {
+        display: flex;
+    }
+
+    #nav-menu-show:checked ~ .nav-menu-toggler span:nth-child(1) {
+        transform: rotate(45deg) translateY(0.25rem) translateX(0.25rem);
+    }
+
+    #nav-menu-show:checked ~ .nav-menu-toggler span:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+
+    #nav-menu-show:checked ~ .nav-menu-toggler span:nth-child(2) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .wisata-list {
+        justify-content: center;
+    }
+
+    .wisata-card {
+        width: 95%;
+        height: 14rem;
+    }
+}
